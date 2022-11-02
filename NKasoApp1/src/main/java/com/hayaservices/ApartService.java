@@ -6,15 +6,15 @@ import org.springframework.stereotype.Service;
 import com.hayaservices.dao.ApartmentsDao;
 import com.hayaservices.dao.ReservationsDao;
 import com.hayaservices.entities.Apartments;
-import com.hayaservices.entities.reservations;
+import com.hayaservices.entities.Reservations;
 
-@Service
-public class ApartService {
+   @Service
+   public class ApartService {
 
 	@Autowired
 	private ApartmentsDao dao;
 	public Iterable<Apartments> getApartments() {
-		return dao.findAll();
+	return dao.findAll();
 	}
 
 	public Apartments  getApartmentsById (int Id) {

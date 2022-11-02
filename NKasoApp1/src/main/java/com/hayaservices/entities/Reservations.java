@@ -4,23 +4,27 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
+@Data
 @Entity @Table (name = "reservations")
 @Setter @Getter
 
-public class reservations {
+public class Reservations {
 	@Id  @Column (name = "reservationId")
 	private int reservationId;
 	@Column(name = "roleId")
 	private int roleId;
-	@Column(name = "clientId")
-	private int clientId;
-	@Column(name = "userId")
 	private Double  price;
 	private String reason;
 	private Date  reservationDate;
@@ -36,6 +40,20 @@ public class reservations {
 	private String reservationStatus;
 	private String adminComment;
 	
+	@JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "roomId", nullable = false)
+    private Rooms room;
+	
+	@JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false)
+    private Users user;
+	
+	@JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "clientId", nullable = false)
+    private Clients client;
 	
 	public int getReservationId() {
 		return reservationId;
@@ -127,39 +145,5 @@ public class reservations {
 	public void setAdminComment(String adminComment) {
 		this.adminComment = adminComment;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

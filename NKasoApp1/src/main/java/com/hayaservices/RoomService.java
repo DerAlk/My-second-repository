@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.hayaservices.dao.ApartmentsDao;
 import com.hayaservices.dao.RoomsDao;
 import com.hayaservices.entities.Apartments;
-import com.hayaservices.entities.reservations;
+import com.hayaservices.entities.Reservations;
 import com.hayaservices.entities.Rooms;
 
 @Service
@@ -26,11 +26,13 @@ public class RoomService {
 	return "Room removed" +Id ;
 	}
 	
-	    public Rooms updateRooms(Rooms rooms) {
-		Rooms existingRooms = dao. findById(rooms.getRoomId()).orElse( new Rooms());
-		existingRooms.setRoomName(rooms.getRoomName());
-		existingRooms.setCapacity(rooms.getCapacity());
-		existingRooms.setCode(rooms.getCode());
-		return dao.save(existingRooms);
+	 public Rooms updateRooms(Rooms rooms) {
+    Rooms existingRooms = dao. findById(rooms.getRoomId()).orElse( new Rooms());
+	existingRooms.setRoomName(rooms.getRoomName());
+	existingRooms.setCapacity(rooms.getCapacity());
+	existingRooms.setCode(rooms.getCode());
+	return dao.save(existingRooms);
+	
 		}
+	 
 }

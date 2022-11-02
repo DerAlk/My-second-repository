@@ -1,13 +1,20 @@
 package com.hayaservices.entities;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
+@Data
 @Entity @Table (name = "apartments")
 @Getter @Setter
 public class Apartments {
@@ -41,5 +48,11 @@ public class Apartments {
 	public void setDesc(String desc) {
 		this.aptDesc = desc;
 	}
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apartment")
+	private Set<Rooms> rooms;
 	
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apartment")
+	private Set<Images> images;
 }

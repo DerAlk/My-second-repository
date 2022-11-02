@@ -15,9 +15,9 @@ import com.hayaservices.entities.Apartments;
 	
 	   @Autowired
 	    private ApartmentsDao dao;
-	    @GetMapping("apartments/ {Apt_Id} ")
-	    public Apartments find(@PathVariable  int Apt_Id) {
-		java.util.Optional<Apartments> opt = dao.findById(Apt_Id);
+	    @GetMapping("apartments/ {aptId} ")
+	    public Apartments find(@PathVariable  int aptId) {
+		java.util.Optional<Apartments> opt = dao.findById(aptId);
 		Apartments a = new Apartments();
 		if (opt.isPresent())  {
 		a =opt.get();

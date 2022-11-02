@@ -8,19 +8,18 @@ import org.springframework.stereotype.Service;
 
 import com.hayaservices.dao.ReservationsDao;
 import com.hayaservices.entities.Apartments;
-import com.hayaservices.entities.reservations;
-import com.hayaservices.model.Reservations;
+import com.hayaservices.entities.Reservations;
 
-@Service
-public class ReservationService {
+  @Service
+    public class ReservationService {
 
 	@Autowired
 	private ReservationsDao dao;
 	
-	public Iterable<reservations> getReservations() {
+	public Iterable<Reservations> getReservations() {
 	return dao.findAll();
 	}
-	reservations getReservationsById (int Id) {
+	Reservations getReservationsById (int Id) {
 	return dao. findById(Id).orElse( null);
 	}
 	String deleteReservations (int Id) {
@@ -28,14 +27,14 @@ public class ReservationService {
 	return "Reservation deleted" +Id ;
 	}
 	
-//	    public Reservations updateReservations(Reservations reservations) {
-//	   Reservations existingReservations = dao. findById(reservations.getReservationId()).orElse(new Reservations());
-//		existingReservations.setPrice(reservations.getPrice());
-//		existingReservations.setStartDate(reservations.getStartDate());
-//		existingReservations.setEndDate(reservations.getEndDate());
-//		return dao.save(existingReservations);
-//		
-//      }
-	
+	    public Reservations updateReservations(Reservations reservations) {
+	   Reservations existingReservations = dao. findById(reservations.getReservationId()).orElse(new Reservations());
+		existingReservations.setPrice(reservations.getPrice());
+		existingReservations.setStartDate(reservations.getStartDate());
+		existingReservations.setEndDate(reservations.getEndDate());
+		return dao.save(existingReservations);
+		
+      }
+
 }
 

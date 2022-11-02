@@ -1,12 +1,21 @@
 package com.hayaservices.entities;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.hayaservices.entities.Reservations;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
+@ Data
 @Entity @Table (name = "clients")
 @Setter @Getter
 
@@ -77,5 +86,9 @@ import lombok.Setter;
 		Password = password;
 	}
 	
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+	private Set<Reservations> reservations;
+
 	
 }

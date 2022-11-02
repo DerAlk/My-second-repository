@@ -1,15 +1,22 @@
 package com.hayaservices.entities;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-
+@Data
 @Entity @Table (name = "rooms")
 public class Rooms {
 
@@ -20,9 +27,6 @@ public class Rooms {
 	private int Capacity;
 	private String Desc;
 	private String Code;
-	
-	@Column(name = "aptId")
-	private int aptId;
 	
 	public int getRoomId() {
 		return roomId;
@@ -60,7 +64,18 @@ public class Rooms {
 	public void setCode(String Code) {
 		this.Code = Code;
 	}
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "room")
+	private Set<Reservations> reservations;
 	
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "room")
+	private Set<Images> images;
+	
+	@JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "aptId", nullable = false)
+	private Apartments apartment;
 	}
 	
 

@@ -5,11 +5,16 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
+@Data
 @Entity @Table (name = "transfers")
 @Setter @Getter
 
@@ -91,6 +96,10 @@ public class Transfers {
 		this.commission = commission;
 	}
 	
+	@JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false)
+    private Users user;
 	
 	
 }
