@@ -1,5 +1,5 @@
 package com.hayaservices.pojos;
 
-public class test {
+public class test1 {
 
 }
