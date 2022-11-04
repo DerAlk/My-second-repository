@@ -17,11 +17,15 @@ import lombok.Setter;
 @Data
 @Entity @Table (name = "apartments")
 @Getter @Setter
-public class Apartments {
-	@Id  @Column (name = "aptId")
-	private int aptId;
-	private String aptName;
+
+  public class Apartments {
+  @Id  @Column (name = "APT_ID")
+   private int aptId;
+  @Column (name = "APT_NAME")
+   private String aptName;
+	@Column (name = "APT_ADDRESS")
 	private String aptAddress;
+	@Column (name = "APT_DESC")
 	private String aptDesc;
 	
 	public int getAptId() {
@@ -48,11 +52,11 @@ public class Apartments {
 	public void setDesc(String desc) {
 		this.aptDesc = desc;
 	}
-	@JsonBackReference
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apartment")
-	private Set<Rooms> rooms;
-	
-	@JsonBackReference
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apartment")
-	private Set<Images> images;
+//	@JsonBackReference
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apartment")
+//	private Set<Rooms> rooms;
+//	
+//	@JsonBackReference
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apartment")
+//	private Set<Images> images;
 }

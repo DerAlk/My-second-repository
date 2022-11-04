@@ -20,31 +20,57 @@ import lombok.Setter;
 
 public class Images {
 
-	@Id  @Column (name = "imageId")
+	@Id  @Column (name = "IMAGE_ID")
 	private int imageId;
+	@Id  @Column (name = "IMAGE_DESC")
 	private String imageDesc;
+	@Id  @Column (name = "APT_ID")
+	private int aptId;
+	@Id  @Column (name = "ROOM_ID")
+	private int roomId;
+	
+	
+	@JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "APT_ID", nullable = false)
+	private Apartments apartment;
+	
+	@JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "ROOM_ID", nullable = false)
+    private Rooms room;
+	
 	
 	public int getImageId() {
 		return imageId;
 	}
+
 	public void setImageId(int imageId) {
 		this.imageId = imageId;
 	}
+
 	public String getImageDesc() {
 		return imageDesc;
 	}
+
 	public void setImageDesc(String imageDesc) {
 		this.imageDesc = imageDesc;
 	}
-	
-	@JsonManagedReference
-    @ManyToOne
-    @JoinColumn(name = "roomId", nullable = false)
-    private Rooms room;
-	
-	@JsonManagedReference
-    @ManyToOne
-    @JoinColumn(name = "aptId", nullable = false)
-	private Apartments apartment;
-	
+
+	public int getAptId() {
+		return aptId;
+	}
+
+	public void setAptId(int aptId) {
+		this.aptId = aptId;
+	}
+
+	public int getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
+	}
+
 }

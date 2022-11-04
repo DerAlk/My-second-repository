@@ -20,15 +20,23 @@ import lombok.Setter;
 @Setter @Getter
 
     public class Clients {
-	@Id  @Column (name = "clientId")
+	@Id  @Column (name = "CLIENT_ID")
 	private int clientId;
+	@Id  @Column (name = "FIRST_NAME")
 	private String fristName;
+	@Id  @Column (name = "LAST_NAME")
 	private String lastName;
+	@Id  @Column (name = "PHONE_NUM")
 	private String phoneNumber;
+	@Id  @Column (name = "EMAIL")
 	private String emailAddress;
+	@Id  @Column (name = "WHERE_FROM")
 	private String whereFrom;
+	@Id  @Column (name = "CONFIRMATION_NUM")
 	private int confirmationNum;
+	@Id  @Column (name = "COMPANY")
 	private String company;
+	@Id  @Column (name = "PASSWORD")
 	private String Password;
 	
 	public int getClientId() {
@@ -86,9 +94,9 @@ import lombok.Setter;
 		Password = password;
 	}
 	
-	@JsonBackReference
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-	private Set<Reservations> reservations;
+//	@JsonBackReference
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+//	private Set<Reservations> reservations;
 
 	
 }

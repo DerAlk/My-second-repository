@@ -1,4 +1,4 @@
-package com.hayaservices.controller;
+ package com.hayaservices.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

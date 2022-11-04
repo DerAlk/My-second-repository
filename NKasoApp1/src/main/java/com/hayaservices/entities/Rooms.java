@@ -15,18 +15,34 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@Entity @Table (name = "rooms")
-public class Rooms {
-
-	@Id  @Column (name = "roomId")
+    @Data
+    @Entity @Table (name = "rooms")
+    @Setter @Getter
+    public class Rooms {
+   @Id  @Column (name = "ROOM_ID")
 	private int roomId;
+	@Id  @Column (name = "ROOM_NAME")
 	private String roomName;
+	@Id  @Column (name = "PRICE")
 	private Double Price;
+	@Id  @Column (name = "CAPACITY")
 	private int Capacity;
+	@Id  @Column (name = "DESC")
 	private String Desc;
+	@Id  @Column (name = "CODE")
 	private String Code;
+	@Id  @Column (name = "APT_ID")
+	private int aptId;
+	
+	
+	@JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "APT_ID", nullable = false)
+	private Apartments apartment;
+	
 	
 	public int getRoomId() {
 		return roomId;
@@ -64,18 +80,26 @@ public class Rooms {
 	public void setCode(String Code) {
 		this.Code = Code;
 	}
-	@JsonBackReference
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "room")
-	private Set<Reservations> reservations;
+	public int getAptId() {
+		return aptId;
+	}
+	public void setAptId(int aptId) {
+		this.aptId = aptId;
+	}
 	
-	@JsonBackReference
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "room")
-	private Set<Images> images;
 	
-	@JsonManagedReference
-    @ManyToOne
-    @JoinColumn(name = "aptId", nullable = false)
-	private Apartments apartment;
+	
+	
+	
+//	@JsonBackReference
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "room")
+//	private Set<Reservations> reservations;
+//	
+//	@JsonBackReference
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "room")
+//	private Set<Images> images;
+	
+	
 	}
 	
 

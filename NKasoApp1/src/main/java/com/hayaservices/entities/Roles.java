@@ -15,10 +15,11 @@ import lombok.Setter;
    @Entity @Table (name = "roles")
    @Setter @Getter
     public class Roles {
-	@Id  @Column (name = "roleId")
+	@Id  @Column (name = "ROLE_ID")
 	private int roleId;
-	
+	@Id  @Column (name = "ROLE_NAME")
 	private String roleName;
+	
 	public int getRoleId() {
 		return roleId;
 	}

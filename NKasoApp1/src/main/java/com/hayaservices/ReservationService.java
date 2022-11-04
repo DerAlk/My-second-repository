@@ -28,7 +28,7 @@ import com.hayaservices.entities.Reservations;
 	}
 	
 	    public Reservations updateReservations(Reservations reservations) {
-	   Reservations existingReservations = dao. findById(reservations.getReservationId()).orElse(new Reservations());
+	    Reservations existingReservations = dao. findById(reservations.getReservationId()).orElse(new Reservations());
 		existingReservations.setPrice(reservations.getPrice());
 		existingReservations.setStartDate(reservations.getStartDate());
 		existingReservations.setEndDate(reservations.getEndDate());
