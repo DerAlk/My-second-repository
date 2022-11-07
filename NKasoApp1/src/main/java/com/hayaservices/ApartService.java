@@ -18,10 +18,11 @@ import com.hayaservices.entities.Reservations;
 	return dao.findAll();
 	}
 
-	public Apartments  getApartmentsById (int Id) {
-		return dao. findById(Id).orElse(null);
+	 public Apartments  getApartmentsById (int Id) {
+     return dao. findById(Id).orElse(null);
 	}
-	String deleteApartments (int Id) {
+	 
+	    String deleteApartments (int Id) {
 		dao.deleteById(Id);
 		return "Apartment deleted" +Id ;
 	}

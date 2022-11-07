@@ -22,14 +22,9 @@ public class Images {
 
 	@Id  @Column (name = "IMAGE_ID")
 	private int imageId;
-	@Id  @Column (name = "IMAGE_DESC")
+	@Column (name = "IMAGE_DESC")
 	private String imageDesc;
-	@Id  @Column (name = "APT_ID")
-	private int aptId;
-	@Id  @Column (name = "ROOM_ID")
-	private int roomId;
-	
-	
+
 	@JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "APT_ID", nullable = false)
@@ -55,22 +50,6 @@ public class Images {
 
 	public void setImageDesc(String imageDesc) {
 		this.imageDesc = imageDesc;
-	}
-
-	public int getAptId() {
-		return aptId;
-	}
-
-	public void setAptId(int aptId) {
-		this.aptId = aptId;
-	}
-
-	public int getRoomId() {
-		return roomId;
-	}
-
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
 	}
 
 }

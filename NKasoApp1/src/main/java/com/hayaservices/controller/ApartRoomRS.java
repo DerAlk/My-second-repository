@@ -10,14 +10,16 @@ import com.hayaservices.dao.ApartmentsDao;
 import com.hayaservices.dao.ReservationsDao;
 import com.hayaservices.dao.RoomsDao;
 import com.hayaservices.dao.TransfersDao;
+import com.hayaservices.dao.UsersDao;
 import com.hayaservices.entities.Apartments;
 import com.hayaservices.entities.Reservations;
 import com.hayaservices.entities.Rooms;
 import com.hayaservices.entities.Transfers;
+import com.hayaservices.entities.Users;
 
       @RestController 
       @Component
-       public class HayaServicesRS {
+       public class ApartRoomRS {
 	
 	   @Autowired
 	    private ApartmentsDao dao;
@@ -32,24 +34,15 @@ import com.hayaservices.entities.Transfers;
 	   return a;
 		
 	    }
-	    
-	    @Autowired
-	    private ReservationsDao rdao;
-	    @GetMapping("/Reservations/{reservationId}")
-	    public Reservations findReservation(@PathVariable  int reservationId) {
-		java.util.Optional<Reservations> opt = rdao.findById(reservationId);
-		Reservations r = new Reservations();
-		if (opt.isPresent())  {
-		r =opt.get();
-	     }
-	
-	   return r;
-		
+	    @GetMapping ({"/apartments"})
+	    public Iterable<Apartments> getApartments() {
+	    return dao.findAll();
+	    	
 	    }
 	    
 	    @Autowired
 	    private RoomsDao rmdao;
-	    @GetMapping("/rooms/{aptId}")
+	    @GetMapping("/rooms/{roomId}")
 	    public Rooms findRoom(@PathVariable  int roomId) {
 		java.util.Optional<Rooms> opt = rmdao.findById(roomId);
 		Rooms o = new Rooms();
@@ -61,21 +54,12 @@ import com.hayaservices.entities.Transfers;
 		
 	    }
 	    
-	    @Autowired
-	    private TransfersDao tdao;
-	    @GetMapping("/transfers/{transferId}")
-	    public Transfers findTransafers(@PathVariable  int transferId) {
-		java.util.Optional<Transfers> opt = tdao.findById(transferId);
-		Transfers t = new Transfers();
-		if (opt.isPresent())  {
-		t =opt.get();
-	     }
-	
-	   return t;
-		
+	    @GetMapping ({"/rooms"})
+	      public Iterable<Rooms> getRooms() {
+	       return rmdao.findAll();
 	    }
-	
-	}
+	    
+      }
 
 
 	

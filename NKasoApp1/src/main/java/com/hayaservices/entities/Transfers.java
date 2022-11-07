@@ -22,27 +22,25 @@ public class Transfers {
 
 	@Id  @Column (name = "TRANSFER_ID")
 	private int transferId;
-	@Id  @Column (name = "TRANSFER_TYPE")
+	@Column (name = "TRANSFER_TYPE")
 	private String transferType;
-	@Id  @Column (name = "SENDER_NAME")
+	@Column (name = "SENDER_NAME")
 	private String senderName;
-	@Id  @Column (name = "RECEIVER_NAME")
+	@Column (name = "RECEIVER_NAME")
 	private String receiverName;
-	@Id  @Column (name = "TRANSFER_AMOUNT")
+	@Column (name = "TRANSFER_AMOUNT")
 	private Double transferAmount;
-	@Id  @Column (name = "REMAINING_BALANCE")
+	@Column (name = "REMAINING_BALANCE")
 	private Double remainingBalance;
-	@Id  @Column (name = "TRANSFER_DATE")
+	@Column (name = "TRANSFER_DATE")
 	private Date transferDate;
-	@Id  @Column (name = "COUNTRY_FROM")
+	@Column (name = "COUNTRY_FROM")
 	private String countryFrom;
-	@Id  @Column (name = "COUNTRY_TO")
+	@Column (name = "COUNTRY_TO")
 	private String countryTo;
-	@Id  @Column (name = "COMMISSION")
+   @Column (name = "COMMISSION")
 	private Double commission;
-	@Column(name = "CLIENT_ID")
-	private int clientId;
-	
+
 	
 	@JsonManagedReference
     @ManyToOne
@@ -110,13 +108,5 @@ public class Transfers {
 	public void setCommission(Double commission) {
 		this.commission = commission;
 	}
-	public int getClientId() {
-		return clientId;
-	}
-	public void setClientId(int clientId) {
-		this.clientId = clientId;
-	
-	}
-	
-	
+
 }

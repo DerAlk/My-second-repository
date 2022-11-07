@@ -52,11 +52,4 @@ import lombok.Setter;
 	public void setDesc(String desc) {
 		this.aptDesc = desc;
 	}
-//	@JsonBackReference
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apartment")
-//	private Set<Rooms> rooms;
-//	
-//	@JsonBackReference
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apartment")
-//	private Set<Images> images;
 }

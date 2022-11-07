@@ -47,16 +47,16 @@ public class Reservations {
 	private String profile;
 	@Column(name = "CLIENT_STATUS")
 	private String clientStatus;
-	@Column(name = "ROOM_ID")
-	private Double  roomId;
-	@Column(name = "CLIENT_ID")
-	private Double  clientId;
-	@Column(name = "USER_ID")
-	private Double  userId;
-	@Column(name = "ADMINCOMMENT")
+    @Column(name = "ADMIN_COMMENT")
 	private String adminComment;
 	@Column(name = "RESERVATION_STATUS")
 	private String reservationStatus;
+	
+	
+	@JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "APT_ID", nullable = false)
+    private Apartments apartment;
 	
 	@JsonManagedReference
     @ManyToOne
@@ -177,30 +177,6 @@ public class Reservations {
 		this.clientStatus = clientStatus;
 	}
 
-	public Double getRoomId() {
-		return roomId;
-	}
-
-	public void setRoomId(Double roomId) {
-		this.roomId = roomId;
-	}
-
-	public Double getClientId() {
-		return clientId;
-	}
-
-	public void setClientId(Double clientId) {
-		this.clientId = clientId;
-	}
-
-	public Double getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Double userId) {
-		this.userId = userId;
-	}
-
 	public String getAdminComment() {
 		return adminComment;
 	}
@@ -240,4 +216,5 @@ public class Reservations {
 	public void setUser(Users user) {
 		this.user = user;
 	}
+	
 }	

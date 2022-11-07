@@ -24,18 +24,16 @@ import lombok.Setter;
     public class Rooms {
    @Id  @Column (name = "ROOM_ID")
 	private int roomId;
-	@Id  @Column (name = "ROOM_NAME")
+	@Column (name = "ROOM_NAME")
 	private String roomName;
-	@Id  @Column (name = "PRICE")
+	@Column (name = "PRICE")
 	private Double Price;
-	@Id  @Column (name = "CAPACITY")
+	@Column (name = "CAPACITY")
 	private int Capacity;
-	@Id  @Column (name = "DESC")
+   @Column (name = "DESC")
 	private String Desc;
-	@Id  @Column (name = "CODE")
+   @Column (name = "CODE")
 	private String Code;
-	@Id  @Column (name = "APT_ID")
-	private int aptId;
 	
 	
 	@JsonManagedReference
@@ -80,26 +78,7 @@ import lombok.Setter;
 	public void setCode(String Code) {
 		this.Code = Code;
 	}
-	public int getAptId() {
-		return aptId;
-	}
-	public void setAptId(int aptId) {
-		this.aptId = aptId;
-	}
-	
-	
-	
-	
-	
-//	@JsonBackReference
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "room")
-//	private Set<Reservations> reservations;
-//	
-//	@JsonBackReference
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "room")
-//	private Set<Images> images;
-	
-	
-	}
+
+}
 	
 
