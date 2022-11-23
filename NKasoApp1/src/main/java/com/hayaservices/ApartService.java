@@ -12,11 +12,13 @@ import com.hayaservices.entities.Reservations;
    public class ApartService {
 
 	@Autowired
-	
 	private ApartmentsDao dao;
 	public Iterable<Apartments> getApartments() {
 	return dao.findAll();
 	}
+//	public Apartments save(Apartments apt) {
+//		return ApartmentsDao.save(apt);
+//	}
 
 	 public Apartments  getApartmentsById (int Id) {
      return dao. findById(Id).orElse(null);
